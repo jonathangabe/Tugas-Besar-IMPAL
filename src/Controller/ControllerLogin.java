@@ -5,10 +5,55 @@
  */
 package Controller;
 
+import Model.Aplikasi;
+import View.View;
+import View.ViewLogin;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author UPC
  */
-public class ControllerLogin {
+public class ControllerLogin extends MouseAdapter implements ActionListener {
+
+    private Aplikasi model;
+    private String menusekarang;
+    private JPanel mainPanel;
+    private View view;
+    
+    Aplikasi app = new Aplikasi();
+    ViewLogin log;
+    
+    public ControllerLogin(Aplikasi a) {
+        log = new ViewLogin();
+        log.setVisible(true);
+        log.addListener(this);
+        this.app = a;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object x = e.getSource();
+        
+        if (x.equals(log.getBtnLogin())){
+            if((x.equals(log.getTFusername()=="bendahara"))){
+                if ((x.equals(log.getTFpassword()==""))){
+                    ControllerMenuBendahara vmb = new ControllerMenuBendahara(app);
+                    log.dispose();
+                }                
+            } else if (x.equals(log.getTFusername()=="manajer")){
+                if (x.equals(log.getTFpassword()=="")){
+                    ControllerMenuManajer cmm = new ControllerMenuManajer(app);
+                    log.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(log, "Username/Password Salah");
+            }
+        } 
+    }
     
 }

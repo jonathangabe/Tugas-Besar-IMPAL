@@ -5,10 +5,30 @@
  */
 package Controller;
 
+import Model.Aplikasi;
+import View.ViewMenuManajer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+
 /**
  *
  * @author UPC
  */
-public class ControllerMenuManajer {
+public class ControllerMenuManajer extends MouseAdapter implements ActionListener{
+    Aplikasi app = new Aplikasi();
+    ViewMenuManajer vmm;
+
+    public ControllerMenuManajer(Aplikasi a) {
+        vmm = new ViewMenuManajer();
+        vmm.setVisible(true);
+        vmm.addListener(this);
+        app = a;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

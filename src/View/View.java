@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author Gabe
+ * @author UPC
  */
 public interface View {
     public void addListener(ActionListener e);

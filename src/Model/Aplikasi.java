@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 /**
  *
@@ -23,8 +24,10 @@ public class Aplikasi {
     private ArrayList<Jurnal> listJurnal;
     private ArrayList<TutupBuku> listTutupBuku;
     private Database database;
+    
+    Scanner in = new Scanner(System.in);
 
-    public Aplikasi(ArrayList<Bendahara> listBendahara, ArrayList<ManajerKeuangan> listManajer, ArrayList<TransaksiBelanja> listTransaksiBelanja, ArrayList<TransaksiPenerimaan> listTransaksiPenerimaan, ArrayList<Jurnal> listJurnal, ArrayList<TutupBuku> listTutupBuku, Database database) {
+    /*public Aplikasi(ArrayList<Bendahara> listBendahara, ArrayList<ManajerKeuangan> listManajer, ArrayList<TransaksiBelanja> listTransaksiBelanja, ArrayList<TransaksiPenerimaan> listTransaksiPenerimaan, ArrayList<Jurnal> listJurnal, ArrayList<TutupBuku> listTutupBuku, Database database) {
         this.listBendahara = listBendahara;
         this.listManajer = listManajer;
         this.listTransaksiBelanja = listTransaksiBelanja;
@@ -32,9 +35,7 @@ public class Aplikasi {
         this.listJurnal = listJurnal;
         this.listTutupBuku = listTutupBuku;
         this.database = database;
-    }
-
-    
+    }*/
     
     public void createBendahara(String nip, String nama, String username, String password, String jabatan){
         listBendahara.add(new Bendahara(nip,nama,username,password,jabatan) {});
