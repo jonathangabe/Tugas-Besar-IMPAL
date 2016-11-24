@@ -29,7 +29,21 @@ public class ControllerMenuBendahara extends MouseAdapter implements ActionListe
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object x = e.getSource();
+        
+        if (x.equals(vmb.getBtnPenerimaan())){
+            ControllerPenerimaan cp = new ControllerPenerimaan(app);
+        } else if (x.equals(vmb.getBtnBelanja())){
+            ControllerBelanja cb = new ControllerBelanja(app);
+        } else if (x.equals(vmb.getBtnJurnal())){
+            ControllerJurnal cj = new ControllerJurnal(app);
+        } else if (x.equals(vmb.getBtnPosting())) {
+            ControllerPostingBendahara cpb = new ControllerPostingBendahara(app);
+        } else if (x.equals(vmb.getBtnTutupBuku())) {
+            //
+        } else if (x.equals(vmb.getBtnLogout())) {
+            ControllerLogin cl = new ControllerLogin(app);
+        }
     }
     
 }

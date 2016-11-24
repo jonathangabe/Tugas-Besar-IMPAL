@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 public class ControllerLogin extends MouseAdapter implements ActionListener {
 
     private Aplikasi model;
-    private String menusekarang;
     private JPanel mainPanel;
     private View view;
     

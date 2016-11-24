@@ -6,12 +6,13 @@
 package View;
 
 import Controller.Controller;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author UPC
  */
-public class ViewPostingBendahara extends javax.swing.JFrame {
+public class ViewPostingBendahara extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form PostingBendahara
@@ -49,10 +50,22 @@ public class ViewPostingBendahara extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void addListener(ActionListener e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    
 }

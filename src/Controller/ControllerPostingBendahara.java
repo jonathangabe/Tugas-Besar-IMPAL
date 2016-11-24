@@ -5,10 +5,32 @@
  */
 package Controller;
 
+import Model.Aplikasi;
+import View.ViewPostingBendahara;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+
 /**
  *
  * @author UPC
  */
-public class ControllerPostingBendahara {
+public class ControllerPostingBendahara extends MouseAdapter implements ActionListener{
+    Aplikasi app = new Aplikasi();
+    ViewPostingBendahara vpb;
+
+    public ControllerPostingBendahara(Aplikasi ap) {
+        vpb = new ViewPostingBendahara();
+        vpb.setVisible(true);
+        vpb.addListener(this);
+        app = ap;
+    }    
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        Object x = ae.getSource();
+        
+        
+    }
     
 }

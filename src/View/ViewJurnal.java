@@ -6,12 +6,13 @@
 package View;
 
 import Controller.Controller;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author UPC
  */
-public class ViewJurnal extends javax.swing.JFrame {
+public class ViewJurnal extends javax.swing.JFrame implements View{
 
     /**
      * Creates new form Jurnal
@@ -238,6 +239,16 @@ public class ViewJurnal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void addListener(Controller aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addListener(ActionListener e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void viewErrorMsg(String errorMsg) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
