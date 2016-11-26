@@ -11,7 +11,7 @@ package Model;
  */
 public class TransaksiPenerimaan {
     private String nama,tanggal;
-    private int idPenerimaan,harga,jumlah,total;
+    private int idPenerimaan=0,harga,jumlah,total;
 
     public TransaksiPenerimaan(String nama, String tanggal, int harga, int jumlah, int total) {
         this.nama = nama;
@@ -19,6 +19,7 @@ public class TransaksiPenerimaan {
         this.harga = harga;
         this.jumlah = jumlah;
         this.total = total;
+        idPenerimaan = idPenerimaan+1;
     }
 
     public TransaksiPenerimaan(String nama, String tanggal, int idPenerimaan, int harga, int jumlah, int total) {

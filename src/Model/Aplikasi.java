@@ -49,8 +49,8 @@ public class Aplikasi {
         listTransaksiBelanja.add(new TransaksiBelanja(nama, tanggal, harga, jumlah, total));
     }
     
-    public void addPenerimaan(String nama, String tanggal, int harga, int jumlah, int total, int idPenerimaan){
-        listTransaksiPenerimaan.add(new TransaksiPenerimaan(nama, tanggal, harga, jumlah, total, idPenerimaan));
+    public void addPenerimaan(String nama, String tanggal, int harga, int jumlah, int total){
+        listTransaksiPenerimaan.add(new TransaksiPenerimaan(nama, tanggal, harga, jumlah, total));
     }
     
     public void addJurnal(int idJurnal, float debit, float kredit, String keterangan){

@@ -28,7 +28,18 @@ public class ControllerMenuManajer extends MouseAdapter implements ActionListene
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object x = e.getSource();
         
+        if (x.equals(vmm.getBtnPosting())){
+            ControllerPostingManajer vpm = new ControllerPostingManajer(app);
+            vmm.dispose();
+        } else if (x.equals(vmm.getBtnTutupBuku())){
+            ControllerTutupBuku ctb = new ControllerTutupBuku(app);
+            vmm.dispose();
+        } else if (x.equals(vmm.getBtnLogout())){
+            ControllerLogin cl = new ControllerLogin(app);
+            vmm.dispose();
+        }
     }
     
 }

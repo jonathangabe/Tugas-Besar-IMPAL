@@ -5,10 +5,31 @@
  */
 package Controller;
 
+import Model.Aplikasi;
+import View.ViewPostingManajer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author UPC
  */
-public class ControllerPostingManajer {
+public class ControllerPostingManajer implements ActionListener{
+    Aplikasi app = new Aplikasi();
+    ViewPostingManajer vpm;
+
+    public ControllerPostingManajer(Aplikasi aps) {
+        vpm = new ViewPostingManajer();
+        vpm.setVisible(true);
+        vpm.addListener(this);
+        app = aps;
+    } 
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        Object x = ae.getSource();
+        
+        
+    }
     
 }
