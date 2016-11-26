@@ -7,12 +7,21 @@ package View;
 
 import Controller.Controller;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 
 /**
  *
  * @author UPC
  */
-public class ViewJurnal extends javax.swing.JFrame implements View{
+public class ViewJurnal extends javax.swing.JFrame implements View {
 
     /**
      * Creates new form Jurnal
@@ -45,8 +54,9 @@ public class ViewJurnal extends javax.swing.JFrame implements View{
         CBbulan = new javax.swing.JComboBox<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         TabEdit2 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBDebit = new javax.swing.JComboBox<>();
         BtnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,7 +173,7 @@ public class ViewJurnal extends javax.swing.JFrame implements View{
         });
         jScrollPane4.setViewportView(TabEdit2);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Debit", "Kredit" }));
+        CBDebit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Debit", "Kredit" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -173,16 +183,16 @@ public class ViewJurnal extends javax.swing.JFrame implements View{
                 .addGap(135, 135, 135)
                 .addComponent(CBbulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(CBDebit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 151, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CBbulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CBDebit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -192,19 +202,26 @@ public class ViewJurnal extends javax.swing.JFrame implements View{
 
         BtnBack.setText("Back");
 
+        jLabel1.setText("Jurnal");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(183, 183, 183)
                 .addComponent(BtnBack))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(jLabel1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnBack)
@@ -222,11 +239,12 @@ public class ViewJurnal extends javax.swing.JFrame implements View{
     private javax.swing.JButton BtnAdd;
     private javax.swing.JButton BtnAdd1;
     private javax.swing.JButton BtnBack;
+    private javax.swing.JComboBox<String> CBDebit;
     private javax.swing.JComboBox<String> CBbulan;
     private javax.swing.JTable TabEdit;
     private javax.swing.JTable TabEdit1;
     private javax.swing.JTable TabEdit2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -238,17 +256,93 @@ public class ViewJurnal extends javax.swing.JFrame implements View{
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    public void addListener(Controller aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public void addListener(ActionListener e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       BtnAdd.addActionListener(e);
+       BtnAdd1.addActionListener(e);
+       BtnBack.addActionListener(e);
     }
 
     @Override
     public void viewErrorMsg(String errorMsg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(this, errorMsg);
     }
+    
+    public void addAdapter(MouseAdapter e) {
+        jTabbedPane1.addMouseListener(e);
+    }
+
+    public Object getBtnAdd() {
+        return BtnAdd;
+    }
+
+    public Object getBtnAdd1() {
+        return BtnAdd1;
+    }
+
+    public Object getBtnBack() {
+        return BtnBack;
+    }
+
+    public String getCBDebit() {
+        return CBDebit.getSelectedObjects().toString();
+    }
+
+    public String getCBbulan() {
+        return CBbulan.getSelectedObjects().toString();
+    }
+
+    public JTable getTabEdit() {
+        return TabEdit;
+    }
+
+    public JTable getTabEdit1() {
+        return TabEdit1;
+    }
+
+    public JTable getTabEdit2() {
+        return TabEdit2;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public JScrollPane getjScrollPane4() {
+        return jScrollPane4;
+    }
+
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+    
+    
 }
