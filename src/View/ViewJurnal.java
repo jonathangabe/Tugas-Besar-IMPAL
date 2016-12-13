@@ -6,6 +6,9 @@
 package View;
 
 import Controller.Controller;
+import Model.Aplikasi;
+import Model.TransaksiBelanja;
+import Model.TransaksiPenerimaan;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
@@ -16,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -344,5 +348,44 @@ public class ViewJurnal extends javax.swing.JFrame implements View {
         return jTable1;
     }
     
+    public void setTabEdit(Aplikasi aplikasi) {
+        DefaultTableModel dm = (DefaultTableModel) TabEdit.getModel();
+        int rowCount = dm.getRowCount();
+        for (int i = rowCount-1; i>=0; i--){
+            dm.removeRow(i);
+        }
+        aplikasi.loadBelanja();
+        DefaultTableModel dtm = (DefaultTableModel) TabEdit.getModel();
+        Object rowData[] = new Object[7];
+        for (TransaksiBelanja pen : aplikasi.getListBelanja()){
+            rowData[0] = pen.getIdBelanja();
+            rowData[1] = pen.getNama();
+            rowData[2] = pen.getTanggal();
+            rowData[3] = pen.getHarga();
+            rowData[4] = pen.getJumlah();
+            rowData[5] = pen.getTotal();
+            dtm.addRow(rowData);
+        }
+    }
+    
+    public void setTabEdit1(Aplikasi aplikasi) {
+        DefaultTableModel dm = (DefaultTableModel) TabEdit.getModel();
+        int rowCount = dm.getRowCount();
+        for (int i = rowCount-1; i>=0; i--){
+            dm.removeRow(i);
+        }
+        aplikasi.loadPenerimaan();
+        DefaultTableModel dtm = (DefaultTableModel) TabEdit.getModel();
+        Object rowData[] = new Object[7];
+        for (TransaksiPenerimaan pen : aplikasi.getListPenerimaan()){
+            rowData[0] = pen.getIdPenerimaan();
+            rowData[1] = pen.getNama();
+            rowData[2] = pen.getTanggal();
+            rowData[3] = pen.getHarga();
+            rowData[4] = pen.getJumlah();
+            rowData[5] = pen.getTotal();
+            dtm.addRow(rowData);
+        }
+    }
     
 }

@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author UPC
@@ -422,6 +423,42 @@ public class ViewPenerimaan extends javax.swing.JFrame implements View {
     public JTable getTabEdit() {
         return TabEdit;
     }
+
+    public void setTFeditHarga(JTextField TFeditHarga) {
+        this.TFeditHarga = TFeditHarga;
+    }
+
+    public void setTFeditJumlah(JTextField TFeditJumlah) {
+        this.TFeditJumlah = TFeditJumlah;
+    }
+
+    public void setTFeditNama(JTextField TFeditNama) {
+        this.TFeditNama = TFeditNama;
+    }
+
+    public void setTFeditTotal(JTextField TFeditTotal) {
+        this.TFeditTotal = TFeditTotal;
+    }
+
+    public void setTabEdit(Aplikasi aplikasi) {
+        DefaultTableModel dm = (DefaultTableModel) TabEdit.getModel();
+        int rowCount = dm.getRowCount();
+        for (int i = rowCount-1; i>=0; i--){
+            dm.removeRow(i);
+        }
+        aplikasi.loadPenerimaan();
+        DefaultTableModel dtm = (DefaultTableModel) TabEdit.getModel();
+        Object rowData[] = new Object[7];
+        for (TransaksiPenerimaan pen : aplikasi.getListPenerimaan()){
+            rowData[0] = pen.getIdPenerimaan();
+            rowData[1] = pen.getNama();
+            rowData[2] = pen.getTanggal();
+            rowData[3] = pen.getHarga();
+            rowData[4] = pen.getJumlah();
+            rowData[5] = pen.getTotal();
+            dtm.addRow(rowData);
+        }
+    }   
     
     public void clean() {
         TFaddNama.setText("");

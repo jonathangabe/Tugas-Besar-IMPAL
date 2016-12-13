@@ -23,6 +23,8 @@ public class ControllerJurnal extends MouseAdapter implements ActionListener{
         vj = new ViewJurnal();
         vj.setVisible(true);
         vj.addListener(this);
+        //vj.setTabEdit(ap);
+        //vj.setTabEdit1(ap);
         app = ap;
     }   
 
@@ -30,7 +32,10 @@ public class ControllerJurnal extends MouseAdapter implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         Object x = ae.getSource();
         
-        
+        if (x.equals(vj.getBtnBack())){
+            ControllerMenuBendahara cmb = new ControllerMenuBendahara(app);
+            vj.dispose();
+        }
     }
     
 }

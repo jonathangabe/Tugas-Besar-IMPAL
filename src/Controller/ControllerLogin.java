@@ -39,20 +39,16 @@ public class ControllerLogin extends MouseAdapter implements ActionListener {
         Object x = e.getSource();
         
         if (x.equals(log.getBtnLogin())){
-            if((x.equals(log.getTFusername()=="bendahara"))){
-                if ((x.equals(log.getTFpassword()==""))){
+            if(log.getTFusername().equals("bendahara") && log.getTFpassword().equals("1234")){
                     ControllerMenuBendahara vmb = new ControllerMenuBendahara(app);
                     log.dispose();
-                }                
-            } else if (x.equals(log.getTFusername()=="manajer")){
-                if (x.equals(log.getTFpassword()=="")){
+            }          
+            else if (log.getTFusername().equals("manajer") && log.getTFpassword().equals("4321")){
                     ControllerMenuManajer cmm = new ControllerMenuManajer(app);
-                    log.dispose();
-                }
+                    log.dispose();                
             } else {
                 JOptionPane.showMessageDialog(log, "Username/Password Salah");
             }
         } 
     }
-    
 }

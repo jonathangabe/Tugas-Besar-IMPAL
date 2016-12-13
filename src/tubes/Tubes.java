@@ -5,6 +5,9 @@
  */
 package tubes;
 
+import Controller.ControllerLogin;
+import Model.Aplikasi;
+
 /**
  *
  * @author UPC
@@ -15,7 +18,9 @@ public class Tubes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Aplikasi model = new Aplikasi();
+        ControllerLogin cl = new ControllerLogin(model);
+        
     }
     
 }

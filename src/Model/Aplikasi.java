@@ -8,6 +8,7 @@ package Model;
 import Database.Database;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -17,13 +18,14 @@ import javax.swing.JOptionPane;
  * @author UPC
  */
 public class Aplikasi {
-    private ArrayList<Bendahara> listBendahara;
-    private ArrayList<ManajerKeuangan> listManajer;
-    private ArrayList<TransaksiBelanja> listTransaksiBelanja;
-    private ArrayList<TransaksiPenerimaan> listTransaksiPenerimaan;
-    private ArrayList<Jurnal> listJurnal;
-    private ArrayList<TutupBuku> listTutupBuku;
+    private ArrayList<Bendahara> listBendahara = new ArrayList<>();
+    private ArrayList<ManajerKeuangan> listManajer = new ArrayList<>();
+    private ArrayList<TransaksiBelanja> listTransaksiBelanja = new ArrayList<>();
+    private ArrayList<TransaksiPenerimaan> listTransaksiPenerimaan = new ArrayList<>();
+    private ArrayList<Jurnal> listJurnal = new ArrayList<>();
+    private ArrayList<TutupBuku> listTutupBuku =  new ArrayList<>();
     private Database database;
+    private ResultSet rs = null;
     
     Scanner in = new Scanner(System.in);
 
@@ -51,6 +53,8 @@ public class Aplikasi {
     
     public void addPenerimaan(String nama, String tanggal, int harga, int jumlah, int total){
         listTransaksiPenerimaan.add(new TransaksiPenerimaan(nama, tanggal, harga, jumlah, total));
+        /*TransaksiPenerimaan tp = new TransaksiPenerimaan(nama, tanggal, harga, jumlah, total);
+        listTransaksiPenerimaan.add(tp);*/
     }
     
     public void addJurnal(int idJurnal, float debit, float kredit, String keterangan){
@@ -200,5 +204,13 @@ public class Aplikasi {
     
     public ArrayList<TutupBuku> getListTutupBuku(){
         return listTutupBuku;
+    }
+    
+    public void ubahPenerimaan (String nama, String tanggal, String harga, String jumlah, String total) {
+        
+    }
+    
+    public void tablePenerimaan (String id){
+        
     }
 }

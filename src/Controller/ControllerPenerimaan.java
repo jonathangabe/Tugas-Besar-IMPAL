@@ -7,10 +7,12 @@ package Controller;
 
 import Model.Aplikasi;
 import Model.TransaksiPenerimaan;
+import View.ViewJurnal;
 import View.ViewPenerimaan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,11 +22,14 @@ import javax.swing.JOptionPane;
 public class ControllerPenerimaan extends MouseAdapter implements ActionListener{
     Aplikasi app = new Aplikasi();
     ViewPenerimaan vp;
+    ViewJurnal vj;
+    private int nPenerimaan=0;
 
     public ControllerPenerimaan(Aplikasi a) {
         vp = new ViewPenerimaan();
         vp.setVisible(true);
         vp.addListener(this);
+        vp.addAdapter(this);
         app = a;
     }
 
@@ -33,59 +38,49 @@ public class ControllerPenerimaan extends MouseAdapter implements ActionListener
         Object x = ae.getSource();
         
         if (x.equals(vp.getBtnAdd())){
-            String nama = vp.getTFaddNama();
-            String harga = vp.getTFaddHarga();
-            String jml = vp.getTFaddJumlah();
-            String ttl = vp.getTFaddTotal();
-            String tgl = vp.getCBtanggal();
-            String bln = vp.getCBbulan();
-            String thn = vp.getCBtahun();
-             if("".equals(nama)){
-                JOptionPane.showMessageDialog(vp, "Nama Tidak Boleh Kosong");
-                vp.clean();
+            if (!vp.getCBtanggal().equals("tanggal") && !vp.getCBbulan().equals("bulan") && !vp.getCBtahun().equals("tahun")) {
+                if (!vp.getTFaddNama().isEmpty() && !vp.getTFaddHarga().isEmpty() && !vp.getTFaddJumlah().isEmpty()){
+                    int jum, hrg;
+                    try {
+                        jum = Integer.parseInt(vp.getTFaddJumlah());
+                        hrg = Integer.parseInt(vp.getTFaddHarga());
+                        int ttl = jum*hrg;
+                        //nPenerimaan = nPenerimaan+1;
+                        app.addPenerimaan(vp.getTFaddNama(), vp.getTanggal(), hrg, jum, ttl);
+                        JOptionPane.showMessageDialog(vp, "Penerimaan Berhasil Disimpan");
+                        vp.setTabEdit(app);
+                        vp.clean();
+                    } catch (NumberFormatException eror) {
+                        JOptionPane.showMessageDialog(null, "Data Harga / Jumlah Anda Tidak Valid!");
+                        vp.clean();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Harap Data Input Dilengkapi!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Harap Pilih Tanggal!");
             }
-             else if("".equals(harga))
-            {
-                JOptionPane.showMessageDialog(vp, "Harga Tidak Boleh Kosong");
-                vp.clean();
+        } else if (x.equals(vp.getBtnBack())) {
+            ControllerMenuBendahara cmb = new ControllerMenuBendahara(app);
+            vp.dispose();
+        } /*else if (x.equals(vp.getBtnEdit())) {
+            if (!vp.getTFeditNama().isEmpty() && !vp.getTFeditHarga().isEmpty() && !vp.getTFeditJumlah().isEmpty()){
+                try {
+                    int total = Integer.parseInt(vp.getTFeditJumlah()) * Integer.parseInt(vp.getTFeditHarga());
+                    
+                }
             }
-             else if("".equals(jml))
-            {
-                JOptionPane.showMessageDialog(vp, "Jumlah Tidak Boleh Kosong");
-                vp.clean();
-            }
-             else if("".equals(ttl))
-            {
-                JOptionPane.showMessageDialog(vp, "Total Tidak Boleh Kosong");
-                vp.clean();
-            }
-             else if("".equals(tgl))
-            {
-                JOptionPane.showMessageDialog(vp, "Tanggal Tidak Boleh Kosong");
-                vp.clean();
-            }
-             else if("".equals(bln))
-            {
-                JOptionPane.showMessageDialog(vp, "Bulan Tidak Boleh Kosong");
-                vp.clean();
-            }
-             else if("".equals(thn))
-            {
-                JOptionPane.showMessageDialog(vp, "Tahun Tidak Boleh Kosong");
-                vp.clean();
-            }
-             else {
-                 int x1 = Integer.parseInt(harga);
-                 int x2 = Integer.parseInt(ttl);
-                 int x3 = Integer.parseInt(jml);
-                 app.addPenerimaan(nama, tgl, x1, x3, x2);
-                 
-                 JOptionPane.showMessageDialog(vp, "Penerimaan Berhasil Disimpan");
-                 
-             }
-        } else if (x.equals(vp.getBtnEdit())){
+        }*/
+    }
+
+    /*@Override
+    public void mouseClicked(MouseEvent me) {
+        Object m = me.getSource();
+        
+        if(m.equals(vp.getTabEdit())){
+            int row = vp.getTabEdit().getSelectedRow();
+            String klik = (vp.getTabEdit().getModel().getValueAt(row, 0).toString());
             
         }
-    }
-    
+    }*/    
 }

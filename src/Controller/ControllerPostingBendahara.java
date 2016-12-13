@@ -30,7 +30,10 @@ public class ControllerPostingBendahara extends MouseAdapter implements ActionLi
     public void actionPerformed(ActionEvent ae) {
         Object x = ae.getSource();
         
-        
+        if (x.equals(vpb.getBtnBack())){
+            ControllerMenuBendahara cmb = new ControllerMenuBendahara(app);
+            vpb.dispose();
+        }
     }
     
 }

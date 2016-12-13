@@ -17,6 +17,7 @@ import java.io.ObjectOutputStream;
  * @author UPC
  */
 public class Database {
+    
     public void saveObject(Object o, String file)
         throws FileNotFoundException, IOException{
         FileOutputStream fout = new FileOutputStream(file);
@@ -30,4 +31,6 @@ public class Database {
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
         return ois.readObject();                
     }
+    
+    
 }

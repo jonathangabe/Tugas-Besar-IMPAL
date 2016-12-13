@@ -29,7 +29,10 @@ public class ControllerTutupBuku implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         Object x = ae.getSource();
         
-        
+        if (x.equals(vtb.getBtnBack())){
+            ControllerMenuBendahara cmb = new ControllerMenuBendahara(app);
+            vtb.dispose();
+        }
     }
     
     
